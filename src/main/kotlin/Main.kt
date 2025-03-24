@@ -38,7 +38,7 @@ fun catFile(args: Array<String>) {
         "-p" ->{
             val blob = File(".git/objects/${args[2].take(2)}/${args[2].drop(2)}")
             val output = InflaterInputStream(blob.inputStream()).reader().readText()
-            .substringAfter("0".toByte().toString(), "")
+            .substringAfter("\u0000")
             print(output)
         }
         else -> {
